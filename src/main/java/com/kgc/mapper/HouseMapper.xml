@@ -335,6 +335,9 @@
       path = #{path,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
+   <!--
+        根据用户编号查找对应的房屋信息   即用户发布的房屋  有可能有多个
+                -->
   <select id="getHouseByUserId" parameterType="int" resultType="House">
 
 select h.`ID`,title,price,pubdate,contact,floorage,path,t.`NAME`as tname,s.`NAME` as sname,d.name as dname,ispass
@@ -345,7 +348,9 @@ inner join district as d on s.`DISTRICT_ID`=d.id
 where h.USER_ID=#{userid} and isdel=0
 
   </select>
-  <!--list.jsp-->
+      <!--
+        带条件的房屋分页查询 前端界面显示
+        -->
   <select id="getBrowiseHouse" parameterType="com.kgc.utils.HouseCondition2" resultType="House">
 
 select h.`ID`,title,price,pubdate,contact,floorage,path,t.`NAME`as tname,s.`NAME` as sname,d.name as dname
@@ -375,7 +380,7 @@ and title like concat("%",#{title},"%")
     </if>
   </select>
 
-
+<!--通过房屋表的房子编号来查找某个房屋信息-->
   <select id="getHouseById" resultType="House" parameterType="String">
 select h.`ID`,title,price,pubdate,contact,floorage,path, description, t.`NAME`as tname,s.`NAME` as sname,d.name as dname
  from house as h
@@ -384,6 +389,9 @@ inner join type as t on h.`TYPE_ID`=t.`ID`
 inner join district as d on s.`DISTRICT_ID`=d.id
   where h.ID=#{id}
 </select>
+      <!--
+        查询是否审核通过和未通过的所有房屋
+        -->
   <select id="getHouseByYesPass" resultType="house" parameterType="int">
 SELECT h.id,title,price,pubdate,contact,floorage,path,
          t.`NAME` AS tname ,s.`NAME` AS sname , d.`NAME` AS dname
@@ -393,6 +401,9 @@ SELECT h.id,title,price,pubdate,contact,floorage,path,
           INNER JOIN district AS d ON s.`DISTRICT_ID`=d.`ID`
           WHERE ispass=#{isPass}  and isdel=0
   </select>
+    <!--
+  批量审核
+  -->
   <update id="ispassmany">
     update house set ispass=#{ispass} where id in
     <foreach item="item" index="index" collection="list"
