@@ -29,5 +29,5 @@ public interface DistrictMapper {
 
     int updateByPrimaryKey(District record);
 
-    int deletemoreDistrict(List<Integer> ids);
+    int deletemoreDistrict(List<Integer> ids); //批量删除多个区域
 }

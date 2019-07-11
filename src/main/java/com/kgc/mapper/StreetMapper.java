@@ -28,6 +28,6 @@ public interface StreetMapper {
     int updateByPrimaryKeySelective(Street record);
 
     int updateByPrimaryKey(Street record);
-int  deleteStreet(Integer id);
+int  deleteStreet(Integer id);//通过街道编号删除某个街道
 
 }

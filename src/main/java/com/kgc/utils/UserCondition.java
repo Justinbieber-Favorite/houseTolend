@@ -1,10 +1,11 @@
 package com.kgc.utils;
 
 public class UserCondition extends Page{
-    private String name;
-    private String telephone;
-    private Integer min_age;
-    private  Integer max_age;
+    //后台管理员分页显示 查找管理员
+    private String name;//姓名
+    private String telephone;//电话
+    private Integer min_age;//最小年龄
+    private  Integer max_age;//最大年龄
     public String getName() {
         return name;
     }

@@ -225,7 +225,7 @@
       age = #{age,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
   </update>
-
+<!--批量删除管理员-->
   <delete id="deletemoreUser">
     DELETE FROM users WHERE id in
     <foreach item="item" index="index" collection="list"

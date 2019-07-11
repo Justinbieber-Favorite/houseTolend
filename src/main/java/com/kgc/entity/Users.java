@@ -1,17 +1,18 @@
 package com.kgc.entity;
 
 public class Users {
-    private Integer id;
 
-    private String name;
+    private Integer id;//用户编号
 
-    private String password;
+    private String name;//用户名称
 
-    private String telephone;
+    private String password;//用户密码
 
-    private Integer isadmin;
+    private String telephone;//用户手机号
 
-    private Integer age;
+    private Integer isadmin;//用户是否是管理员? 1 是 0  不是
+
+    private Integer age;  //用户年龄
 
     public Integer getId() {
         return id;

@@ -33,7 +33,29 @@ public class UserController {
             return "regs";
         }
     }
+//以下是短信验证功能,暂且不用
+/*    @RequestMapping("LoginAction")
+    public String login(String smstext,String name, String password, Model model, HttpSession session) {
+        String savecode =(String) session.getAttribute("savecode");
 
+        if(savecode.equals(smstext)){
+            Users user = userService.login(name, password);
+            if (user == null) {
+                model.addAttribute("info", "用户名或密码输入有误!");
+                return "login";
+            } else {
+                session.setAttribute("logininfo", user);
+                session.setMaxInactiveInterval(600);//10分钟
+                return "redirect:getHouse";
+            }
+        }else {
+            model.addAttribute("info","验证码错误或验证码已过期,请重试!!");
+            return "login";
+
+        }
+
+
+    }*/
     @RequestMapping("LoginAction")
     public String login(String name, String password, Model model, HttpSession session) {
         Users user = userService.login(name, password);
@@ -44,7 +66,6 @@ public class UserController {
             session.setAttribute("logininfo", user);
             session.setMaxInactiveInterval(600);//10分钟
             return "redirect:getHouse";
-
         }
 
     }

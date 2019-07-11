@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 public class HouseCondition {
+    //后台管理员界面 做审核用
     private String h_title;//标题
     private Date begin_pubdate;// 发布时间
     private Date end_pubdate;//发布时间

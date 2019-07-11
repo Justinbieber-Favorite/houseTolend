@@ -1,6 +1,14 @@
 package com.kgc.utils;
 
 public class HouseCondition2 extends Page {
+
+    //前台用户界面条件查询
+    private String  title;//标题
+    private Integer typeid;//房屋类型
+    private Integer districtid;//区域类型
+    private  Integer streetid;//街道类型
+    private  Integer min_price;//最低价格
+    private  Integer max_price;//最高价格
     public String getTitle() {
         return title;
     }
@@ -42,9 +50,7 @@ public class HouseCondition2 extends Page {
         this.max_price = max_price;
     }
 
-    private String  title;
-    private Integer typeid;
-    private Integer districtid;
+
 
     public Integer getDistrictid() {
         return districtid;
@@ -54,9 +60,7 @@ public class HouseCondition2 extends Page {
         this.districtid = districtid;
     }
 
-    private  Integer streetid;
-    private  Integer min_price;
-    private  Integer max_price;
+
 
 
 }

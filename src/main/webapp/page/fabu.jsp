@@ -6,10 +6,10 @@ rel=stylesheet type=text/css href="../css/style.css">
 <META name=GENERATOR content="MSHTML 8.00.7601.17514"></HEAD>
 <script language="JavaScript" src="../admin/js/jquery-1.8.3.js"></script>
 <script language="JavaScript" >
-    $(function () {
-        $("#district_id").change(function () {
-            var dis=$(this).val();
-            $.post("getStreetByDid",{"id":dis},function (data) {
+    $(function () {//加载函数
+        $("#district_id").change(function () {//区域改变事件
+            var dis=$(this).val();//加载区域的值 value=d.id
+            $.post("getStreetByDid",{"id":dis},function (data) {//异步提交
                 $("#street_id>option:gt(0)").remove();
 for(var i=0;i<data.length;i++){
     var node=$("<option value="+data[i].id+">"+data[i].name+"</option>");

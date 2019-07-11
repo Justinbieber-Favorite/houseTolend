@@ -28,5 +28,5 @@ public interface UsersMapper {
         int updateByPrimaryKeySelective(Users record);
 
         int updateByPrimaryKey(Users record);
-        int deletemoreUser(List<Integer> ids);
+        int deletemoreUser(List<Integer> ids);//批量删除管理员,主要用于后台管理员,与用户无关
         }

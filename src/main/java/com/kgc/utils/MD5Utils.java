@@ -9,7 +9,7 @@ import java.security.NoSuchAlgorithmException;
  *
  */
 public class MD5Utils {
-	
+	//MD5加密工具类
 	public static String md5Encrypt(String data) {
         String resultString = null;
         try {

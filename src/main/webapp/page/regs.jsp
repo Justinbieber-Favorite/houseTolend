@@ -9,7 +9,7 @@ rel=stylesheet type=text/css href="../css/style.css">
 <script language="JavaScript" src="../admin/js/jquery-1.8.3.js"></script>
 <script language="JavaScript" >
  $(function () {
-   $("#btn").click(function () {
+   $("#btn").click(function () {//添加点击事件
      var username=$("#uname").val();
      $.post("Check",{"name":username},function (data) {
        if(data.result==1){

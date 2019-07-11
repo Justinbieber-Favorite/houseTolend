@@ -1,11 +1,12 @@
 package com.kgc.entity;
 
 public class Street {
-    private Integer id;
+    //卓刀泉街道
+    private Integer id;//街道编号
 
-    private String name;
+    private String name;//街道名称
 
-    private Integer districtId;
+    private Integer districtId;//区域编号
 
     public Integer getId() {
         return id;

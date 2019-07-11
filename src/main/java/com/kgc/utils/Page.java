@@ -1,6 +1,7 @@
 package com.kgc.utils;
 
 public class Page {
+   // 封装的分页工具  代替pageHelper中的 page和rows
     private  Integer page=1;
     private  Integer rows=3;
     public Integer getPage() {

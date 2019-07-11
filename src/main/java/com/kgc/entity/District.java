@@ -1,9 +1,10 @@
 package com.kgc.entity;
 
 public class District {
-    private Integer id;
+    //洪山区
+    private Integer id;//区域编号
 
-    private String name;
+    private String name;//区域名称
 
     public Integer getId() {
         return id;

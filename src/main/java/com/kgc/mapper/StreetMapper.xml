@@ -178,7 +178,7 @@
       DISTRICT_ID = #{districtId,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
   </update>
-
+<!--通过街道编号删除某个街道-->
   <delete id="deleteStreet" parameterType="int">
     DELETE FROM `street` WHERE district_id=#{district_id}
   </delete>

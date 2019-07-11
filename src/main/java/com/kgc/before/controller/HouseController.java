@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.kgc.entity.*;
 import com.kgc.service.*;
 import com.kgc.utils.HouseCondition2;
+import com.kgc.utils.MessageUtils;
 import com.kgc.utils.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -137,6 +138,20 @@ return "list";
     return "details";
 
 }
+//验证登录
+    @RequestMapping("getCode")
+    @ResponseBody
+    public  String getCode(String telphone,HttpSession session){
+       String  code =(int) (Math.random() * 100000)+"";//获得一个随机生成的数
+
+       String sengMsg="您的手机验证码是:"+code+",请在两分钟内输入!";
+        int result = MessageUtils.sendMsg(sengMsg, telphone);
+
+session.setAttribute("savecode",code);
+session.setMaxInactiveInterval(120);//2分钟
+        return "{\"result\":"+result +"}";
+
+    }
 
 
 }

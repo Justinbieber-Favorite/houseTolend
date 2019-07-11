@@ -28,5 +28,5 @@ public interface TypeMapper {
     int updateByPrimaryKeySelective(Type record);
 
     int updateByPrimaryKey(Type record);
-    int deletemoreType(List<Integer> ids);
+    int deletemoreType(List<Integer> ids);//批量删除房屋类型,如一室一厅等 ,用于管理员操作
 }

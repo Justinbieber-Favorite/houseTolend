@@ -1,9 +1,10 @@
 package com.kgc.entity;
 
 public class Type {
-    private Integer id;
+    //房屋类型,例如 三室一厅
+    private Integer id;//类型编号
 
-    private String name;
+    private String name;//类型名称
 
     public Integer getId() {
         return id;

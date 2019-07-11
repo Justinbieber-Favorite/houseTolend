@@ -5,34 +5,35 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 public class House {
-    private String id;
 
-    private Integer userId;
+    private String id;//房屋编号
 
-    private Integer typeId;
+    private Integer userId;//用户编号
 
-    private String title;
+    private Integer typeId;//房屋类型编号
 
-    private String description;
+    private String title;//房屋出租标题
 
-    private Long price;
+    private String description;//详细
 
-    private Date pubdate;
+    private Long price;//房屋出租价格
 
-    private Integer floorage;
+    private Date pubdate;//发布日期
 
-    private String contact;
+    private Integer floorage;//房屋面积
 
-    private Integer streetId;
+    private String contact;//联系方式
 
-    private Integer ispass;
+    private Integer streetId;//街道编号
 
-    private Integer isdel;
-    private String path;
+    private Integer ispass;//是否通过审核  1通过 0 未通过
+
+    private Integer isdel;//是否被发布者删除? 1 已删除  0  未删除
+    private String path;//图片信息
     private String tname;  //类型名称
     private String dname; //区域名称
     private String sname; //街道名称
-    private Integer did;
+    private Integer did;  //用于关联house表和区域表所建的字段
 
     public Integer getDid() {
         return did;
