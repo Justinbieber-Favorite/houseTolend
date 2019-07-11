@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.kgc.mapper.HouseMapper" >
   <resultMap id="BaseResultMap" type="com.kgc.entity.House" >
     <id column="ID" property="id" jdbcType="VARCHAR" />
@@ -75,7 +75,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ID, USER_ID, TYPE_ID, TITLE, DESCRIPTION, PRICE, PUBDATE, FLOORAGE, CONTACT, STREET_ID,
+    ID, USER_ID, TYPE_ID, TITLE, DESCRIPTION, PRICE, PUBDATE, FLOORAGE, CONTACT, STREET_ID, 
     ispass, isdel, path
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.kgc.entity.HouseExample" >
@@ -93,7 +93,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select
+    select 
     <include refid="Base_Column_List" />
     from house
     where ID = #{id,jdbcType=VARCHAR}
@@ -109,16 +109,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.kgc.entity.House" >
-    insert into house (ID, USER_ID, TYPE_ID,
-    TITLE, DESCRIPTION, PRICE,
-    PUBDATE, FLOORAGE, CONTACT,
-    STREET_ID, ispass, isdel,
-    path)
-    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER},
-    #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL},
-    #{pubdate,jdbcType=DATE}, #{floorage,jdbcType=INTEGER}, #{contact,jdbcType=VARCHAR},
-    #{streetId,jdbcType=INTEGER}, #{ispass,jdbcType=INTEGER}, #{isdel,jdbcType=INTEGER},
-    #{path,jdbcType=VARCHAR})
+    insert into house (ID, USER_ID, TYPE_ID, 
+      TITLE, DESCRIPTION, PRICE, 
+      PUBDATE, FLOORAGE, CONTACT, 
+      STREET_ID, ispass, isdel, 
+      path)
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER}, 
+      #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
+      #{pubdate,jdbcType=DATE}, #{floorage,jdbcType=INTEGER}, #{contact,jdbcType=VARCHAR}, 
+      #{streetId,jdbcType=INTEGER}, #{ispass,jdbcType=INTEGER}, #{isdel,jdbcType=INTEGER}, 
+      #{path,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.kgc.entity.House" >
     insert into house
@@ -261,18 +261,18 @@
   <update id="updateByExample" parameterType="map" >
     update house
     set ID = #{record.id,jdbcType=VARCHAR},
-    USER_ID = #{record.userId,jdbcType=INTEGER},
-    TYPE_ID = #{record.typeId,jdbcType=INTEGER},
-    TITLE = #{record.title,jdbcType=VARCHAR},
-    DESCRIPTION = #{record.description,jdbcType=VARCHAR},
-    PRICE = #{record.price,jdbcType=DECIMAL},
-    PUBDATE = #{record.pubdate,jdbcType=DATE},
-    FLOORAGE = #{record.floorage,jdbcType=INTEGER},
-    CONTACT = #{record.contact,jdbcType=VARCHAR},
-    STREET_ID = #{record.streetId,jdbcType=INTEGER},
-    ispass = #{record.ispass,jdbcType=INTEGER},
-    isdel = #{record.isdel,jdbcType=INTEGER},
-    path = #{record.path,jdbcType=VARCHAR}
+      USER_ID = #{record.userId,jdbcType=INTEGER},
+      TYPE_ID = #{record.typeId,jdbcType=INTEGER},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      DESCRIPTION = #{record.description,jdbcType=VARCHAR},
+      PRICE = #{record.price,jdbcType=DECIMAL},
+      PUBDATE = #{record.pubdate,jdbcType=DATE},
+      FLOORAGE = #{record.floorage,jdbcType=INTEGER},
+      CONTACT = #{record.contact,jdbcType=VARCHAR},
+      STREET_ID = #{record.streetId,jdbcType=INTEGER},
+      ispass = #{record.ispass,jdbcType=INTEGER},
+      isdel = #{record.isdel,jdbcType=INTEGER},
+      path = #{record.path,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -322,47 +322,42 @@
   <update id="updateByPrimaryKey" parameterType="com.kgc.entity.House" >
     update house
     set USER_ID = #{userId,jdbcType=INTEGER},
-    TYPE_ID = #{typeId,jdbcType=INTEGER},
-    TITLE = #{title,jdbcType=VARCHAR},
-    DESCRIPTION = #{description,jdbcType=VARCHAR},
-    PRICE = #{price,jdbcType=DECIMAL},
-    PUBDATE = #{pubdate,jdbcType=DATE},
-    FLOORAGE = #{floorage,jdbcType=INTEGER},
-    CONTACT = #{contact,jdbcType=VARCHAR},
-    STREET_ID = #{streetId,jdbcType=INTEGER},
-    ispass = #{ispass,jdbcType=INTEGER},
-    isdel = #{isdel,jdbcType=INTEGER},
-    path = #{path,jdbcType=VARCHAR}
+      TYPE_ID = #{typeId,jdbcType=INTEGER},
+      TITLE = #{title,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      PRICE = #{price,jdbcType=DECIMAL},
+      PUBDATE = #{pubdate,jdbcType=DATE},
+      FLOORAGE = #{floorage,jdbcType=INTEGER},
+      CONTACT = #{contact,jdbcType=VARCHAR},
+      STREET_ID = #{streetId,jdbcType=INTEGER},
+      ispass = #{ispass,jdbcType=INTEGER},
+      isdel = #{isdel,jdbcType=INTEGER},
+      path = #{path,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
-  <!--
-       根据用户编号查找对应的房屋信息   即用户发布的房屋  有可能有多个
-               -->
   <select id="getHouseByUserId" parameterType="int" resultType="House">
 
-    select h.`ID`,title,price,pubdate,contact,floorage,path,t.`NAME`as tname,s.`NAME` as sname,d.name as dname,ispass
-    from house as h
-    inner join  street as s on h.`STREET_ID`=s.`ID`
-    inner join type as t on h.`TYPE_ID`=t.`ID`
-    inner join district as d on s.`DISTRICT_ID`=d.id
-    where h.USER_ID=#{userid} and isdel=0
+select h.`ID`,title,price,pubdate,contact,floorage,path,t.`NAME`as tname,s.`NAME` as sname,d.name as dname,ispass
+ from house as h
+inner join  street as s on h.`STREET_ID`=s.`ID`
+inner join type as t on h.`TYPE_ID`=t.`ID`
+inner join district as d on s.`DISTRICT_ID`=d.id
+where h.USER_ID=#{userid} and isdel=0
 
   </select>
-  <!--
-    带条件的房屋分页查询 前端界面显示
-    -->
+  <!--list.jsp-->
   <select id="getBrowiseHouse" parameterType="com.kgc.utils.HouseCondition2" resultType="House">
 
-    select h.`ID`,title,price,pubdate,contact,floorage,path,t.`NAME`as tname,s.`NAME` as sname,d.name as dname
-    from house as h
-    inner join  street as s on h.`STREET_ID`=s.`ID`
-    inner join type as t on h.`TYPE_ID`=t.`ID`
-    inner join district as d on s.`DISTRICT_ID`=d.id
-    where ispass=1 and isdel=0
+select h.`ID`,title,price,pubdate,contact,floorage,path,t.`NAME`as tname,s.`NAME` as sname,d.name as dname
+ from house as h
+inner join  street as s on h.`STREET_ID`=s.`ID`
+inner join type as t on h.`TYPE_ID`=t.`ID`
+inner join district as d on s.`DISTRICT_ID`=d.id
+where ispass=1 and isdel=0
 
-    <if test="title!=null">
-      and title like concat("%",#{title},"%")
-    </if>
+<if test="title!=null">
+and title like concat("%",#{title},"%")
+</if>
     <if test="typeid!=null">
       and h.TYPE_ID=#{typeid}
     </if>
@@ -380,30 +375,24 @@
     </if>
   </select>
 
-  <!--通过房屋表的房子编号来查找某个房屋信息-->
+
   <select id="getHouseById" resultType="House" parameterType="String">
-    select h.`ID`,title,price,pubdate,contact,floorage,path, description, t.`NAME`as tname,s.`NAME` as sname,d.name as dname
-    from house as h
-    inner join  street as s on h.`STREET_ID`=s.`ID`
-    inner join type as t on h.`TYPE_ID`=t.`ID`
-    inner join district as d on s.`DISTRICT_ID`=d.id
-    where h.ID=#{id}
-  </select>
-  <!--
-    查询是否审核通过和未通过的所有房屋
-    -->
+select h.`ID`,title,price,pubdate,contact,floorage,path, description, t.`NAME`as tname,s.`NAME` as sname,d.name as dname
+ from house as h
+inner join  street as s on h.`STREET_ID`=s.`ID`
+inner join type as t on h.`TYPE_ID`=t.`ID`
+inner join district as d on s.`DISTRICT_ID`=d.id
+  where h.ID=#{id}
+</select>
   <select id="getHouseByYesPass" resultType="house" parameterType="int">
-    SELECT h.id,title,price,pubdate,contact,floorage,path,
-    t.`NAME` AS tname ,s.`NAME` AS sname , d.`NAME` AS dname
-    FROM house  AS h
-    INNER JOIN TYPE AS t  ON h.`TYPE_ID`=t.id
-    INNER JOIN street AS s ON h.`STREET_ID`=s.`ID`
-    INNER JOIN district AS d ON s.`DISTRICT_ID`=d.`ID`
-    WHERE ispass=#{isPass}  and isdel=0
+SELECT h.id,title,price,pubdate,contact,floorage,path,
+         t.`NAME` AS tname ,s.`NAME` AS sname , d.`NAME` AS dname
+          FROM house  AS h
+          INNER JOIN TYPE AS t  ON h.`TYPE_ID`=t.id
+          INNER JOIN street AS s ON h.`STREET_ID`=s.`ID`
+          INNER JOIN district AS d ON s.`DISTRICT_ID`=d.`ID`
+          WHERE ispass=#{isPass}  and isdel=0
   </select>
-  <!--
-批量审核
--->
   <update id="ispassmany">
     update house set ispass=#{ispass} where id in
     <foreach item="item" index="index" collection="list"
